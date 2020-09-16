@@ -10,7 +10,7 @@ main()
 {
     int count = 0;
     int currentChar;
-    enum WordStatusEnum status = WORD_BEGIN;
+    enum WordStatusEnum status = WORD_END;
 
     while ((currentChar = getchar()) != EOF)
     {
@@ -18,20 +18,14 @@ main()
             || (currentChar == '\t')
             || (currentChar == '\n'))
         {
-            if (status == WORD_BEGIN)
-            {
-                status = WORD_END;
-                count++;
-            }
-            else
-            {
-            }
+            status = WORD_END;
         }
         else
         {
             if (status == WORD_END)
             {
                 status = WORD_BEGIN;
+                count++;
             }
             else
             {
